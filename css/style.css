@@ -737,4 +737,233 @@ footer{
   .profile-card{
     min-height:480px;
   }
+}```css
+/* =====================================================
+   PROFILE CARD BUTTON
+===================================================== */
+
+.profile-card-content{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
 }
+
+.profile-card-content .gold-btn{
+  margin-top:15px;
+  min-height:42px;
+  padding:0 18px;
+  cursor:pointer;
+}
+
+
+/* =====================================================
+   PROFILE MODAL
+===================================================== */
+
+.profile-modal{
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s ease;
+}
+
+.profile-modal.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.profile-modal-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(10px);
+}
+
+.profile-modal-box{
+  position:relative;
+  z-index:2;
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  display:grid;
+  grid-template-columns:42% 58%;
+  background:#111;
+  border:1px solid var(--line);
+  box-shadow:0 30px 100px rgba(0,0,0,.65);
+  transform:translateY(30px);
+  transition:.35s ease;
+}
+
+.profile-modal.active .profile-modal-box{
+  transform:none;
+}
+
+.profile-modal-image-wrap{
+  min-height:560px;
+}
+
+.profile-modal-image{
+  width:100%;
+  height:100%;
+  min-height:560px;
+  object-fit:cover;
+  display:block;
+}
+
+.profile-modal-content{
+  padding:50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.profile-modal-category{
+  color:var(--gold);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  margin-bottom:12px;
+}
+
+.profile-modal-name{
+  font-family:"Cormorant Garamond",serif;
+  font-size:60px;
+  line-height:.95;
+  font-weight:500;
+  margin-bottom:12px;
+}
+
+.profile-modal-meta{
+  color:var(--muted);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+.profile-modal-line{
+  width:60px;
+  height:1px;
+  background:var(--gold);
+  margin:30px 0;
+}
+
+.profile-modal-content h4{
+  color:var(--gold-light);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  margin-top:18px;
+  margin-bottom:8px;
+}
+
+.profile-modal-description,
+.profile-modal-services{
+  color:#bbb6ad;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.profile-modal-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.profile-modal-close{
+  position:absolute;
+  z-index:5;
+  top:15px;
+  right:15px;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.55);
+  color:white;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.profile-modal-close:hover{
+  background:var(--gold);
+  color:#111;
+}
+
+
+/* =====================================================
+   NO RESULTS
+===================================================== */
+
+.no-profiles{
+  grid-column:1/-1;
+  padding:80px 20px;
+  text-align:center;
+  border:1px solid var(--line);
+}
+
+.no-profiles h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:40px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+.no-profiles p{
+  color:var(--muted);
+}
+
+
+/* =====================================================
+   MOBILE PROFILE MODAL
+===================================================== */
+
+@media(max-width:800px){
+
+  .profile-modal{
+    padding:15px;
+  }
+
+  .profile-modal-box{
+    grid-template-columns:1fr;
+    max-height:94vh;
+  }
+
+  .profile-modal-image-wrap{
+    min-height:360px;
+    max-height:430px;
+  }
+
+  .profile-modal-image{
+    min-height:360px;
+    max-height:430px;
+  }
+
+  .profile-modal-content{
+    padding:30px 24px 35px;
+  }
+
+  .profile-modal-name{
+    font-size:48px;
+  }
+
+  .profile-modal-buttons{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .profile-modal-buttons .gold-btn,
+  .profile-modal-buttons .outline-btn{
+    width:100%;
+  }
+
+}
+```
+
