@@ -2,7 +2,7 @@ const profiles = [
   {
     name: "Alina",
     location: "Mumbai · Fashion Model",
-    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85",
+    image: "escort4.jpeg",
     about: "Professional fashion model available for approved commercial, editorial and promotional projects.",
     services: ["Fashion Shoots", "Editorial", "Brand Campaigns", "Promotional Events"],
     phone: "+91 90000 00001"
@@ -10,7 +10,7 @@ const profiles = [
   {
     name: "Sofia",
     location: "Delhi · Editorial Model",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85",
+    image: "escort5.jpeg",
     about: "Professional model experienced in editorial photography and commercial campaigns.",
     services: ["Editorial Shoots", "Fashion", "Brand Campaigns", "Photography"],
     phone: "+91 90000 00002"
@@ -18,7 +18,7 @@ const profiles = [
   {
     name: "Kiara",
     location: "Bangalore · Commercial Model",
-    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85",
+    image: "escort6.jpeg",
     about: "Commercial and lifestyle model available for professional photography and promotional projects.",
     services: ["Lifestyle", "Commercial", "Fashion Shoots", "Promotional Events"],
     phone: "+91 90000 00003"
@@ -26,7 +26,7 @@ const profiles = [
   {
     name: "Arjun",
     location: "Mumbai · Fashion Model",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85",
+    image: "escort7.jpeg",
     about: "Professional male model working across fashion, editorial and commercial photography.",
     services: ["Fashion", "Editorial", "Commercial", "Brand Shoots"],
     phone: "+91 90000 00004"
@@ -34,7 +34,7 @@ const profiles = [
   {
     name: "Ryan",
     location: "Delhi · Commercial Model",
-    image: "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85",
+    image: "escort8.jpeg",
     about: "Commercial model available for professional advertising and lifestyle campaigns.",
     services: ["Advertising", "Lifestyle", "Commercial", "Brand Campaigns"],
     phone: "+91 90000 00005"
@@ -42,7 +42,7 @@ const profiles = [
   {
     name: "Maya",
     location: "Hyderabad · Editorial Model",
-    image: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=900&q=85",
+    image: "escort9.jpeg",
     about: "Editorial and fashion model experienced in professional photography projects.",
     services: ["Editorial", "Fashion", "Photography", "Promotional Events"],
     phone: "+91 90000 00006"
