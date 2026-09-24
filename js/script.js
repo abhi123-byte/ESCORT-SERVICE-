@@ -1,374 +1,501 @@
+```javascript
 document.addEventListener("DOMContentLoaded", () => {
 
-    const featured =
-        document.getElementById("featuredProfiles");
+  /* =========================
+     MOBILE NAVIGATION
+  ========================= */
 
-    if (featured) {
+  const navbar = document.getElementById("navbar");
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
 
-        featured.innerHTML =
-            profiles.slice(0, 6)
-            .map(createProfileCard)
-            .join("");
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuBtn.classList.toggle("active");
+    });
 
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.classList.remove("active");
+      });
+    });
+  }
+
+
+  /* =========================
+     NAVBAR SCROLL EFFECT
+  ========================= */
+
+  window.addEventListener("scroll", () => {
+    if (navbar) {
+      if (window.scrollY > 60) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
     }
+  });
 
 
-    const profileGrid =
-        document.getElementById("profileGrid");
+  /* =========================
+     SMOOTH SCROLL
+  ========================= */
 
-    if (profileGrid) {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
 
-        renderProfiles(profiles);
+      const targetId = this.getAttribute("href");
 
-    }
+      if (!targetId || targetId === "#") return;
 
+      const target = document.querySelector(targetId);
 
-    const search =
-        document.getElementById("search");
+      if (target) {
+        e.preventDefault();
 
-    const category =
-        document.getElementById("category");
-
-    const location =
-        document.getElementById("location");
-
-
-    function filterProfiles() {
-
-        let result = profiles;
-
-        const searchValue =
-            search?.value.toLowerCase() || "";
-
-        const categoryValue =
-            category?.value || "";
-
-        const locationValue =
-            location?.value || "";
-
-
-        result = result.filter(profile => {
-
-            const text =
-                `${profile.name}
-                 ${profile.category}
-                 ${profile.location}`.toLowerCase();
-
-            return text.includes(searchValue);
-
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
         });
+      }
+    });
+  });
 
 
-        if (categoryValue) {
+  /* =========================
+     PROFILE FILTER
+  ========================= */
 
-            result =
-                result.filter(
-                    p => p.category === categoryValue
-                );
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const profiles = document.querySelectorAll(".profile-card");
 
-        }
+  filterButtons.forEach(button => {
 
+    button.addEventListener("click", () => {
 
-        if (locationValue) {
+      filterButtons.forEach(btn => {
+        btn.classList.remove("active");
+      });
 
-            result =
-                result.filter(
-                    p => p.location === locationValue
-                );
+      button.classList.add("active");
 
-        }
+      const filter = button.getAttribute("data-filter");
 
+      profiles.forEach(profile => {
 
-        renderProfiles(result);
+        const category = profile.getAttribute("data-category");
 
-    }
+        if (filter === "all" || filter === category) {
+          profile.style.display = "block";
 
-
-    search?.addEventListener(
-        "input",
-        filterProfiles
-    );
-
-    category?.addEventListener(
-        "change",
-        filterProfiles
-    );
-
-    location?.addEventListener(
-        "change",
-        filterProfiles
-    );
-
-
-    const menu =
-        document.querySelector(".menu-btn");
-
-    menu?.addEventListener(
-        "click",
-        toggleMenu
-    );
-
-
-    const navbar =
-        document.querySelector(".navbar");
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 50) {
-
-            navbar.classList.add("scrolled");
+          setTimeout(() => {
+            profile.style.opacity = "1";
+            profile.style.transform = "translateY(0)";
+          }, 50);
 
         } else {
+          profile.style.opacity = "0";
+          profile.style.transform = "translateY(15px)";
 
-            navbar.classList.remove("scrolled");
-
+          setTimeout(() => {
+            profile.style.display = "none";
+          }, 250);
         }
+
+      });
 
     });
 
+  });
 
-    loadSingleProfile();
 
-    loadBookingProfile();
+  /* =========================
+     PROFILE MODAL
+  ========================= */
+
+  const modal = document.getElementById("profileModal");
+  const modalClose = document.getElementById("modalClose");
+
+  const modalImage = document.getElementById("modalImage");
+  const modalName = document.getElementById("modalName");
+  const modalAge = document.getElementById("modalAge");
+  const modalLocation = document.getElementById("modalLocation");
+  const modalDescription = document.getElementById("modalDescription");
+
+  document.querySelectorAll(".profile-view").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const card = button.closest(".profile-card");
+
+      if (!card || !modal) return;
+
+      const image = card.querySelector("img");
+      const name = card.querySelector(".profile-name");
+      const age = card.querySelector(".profile-age");
+      const location = card.querySelector(".profile-location");
+      const description = card.querySelector(".profile-description");
+
+      if (modalImage && image) {
+        modalImage.src = image.src;
+      }
+
+      if (modalName && name) {
+        modalName.textContent = name.textContent;
+      }
+
+      if (modalAge && age) {
+        modalAge.textContent = age.textContent;
+      }
+
+      if (modalLocation && location) {
+        modalLocation.textContent = location.textContent;
+      }
+
+      if (modalDescription && description) {
+        modalDescription.textContent = description.textContent;
+      }
+
+      modal.classList.add("active");
+      document.body.classList.add("modal-open");
+
+    });
+
+  });
+
+
+  if (modalClose && modal) {
+    modalClose.addEventListener("click", () => {
+      modal.classList.remove("active");
+      document.body.classList.remove("modal-open");
+    });
+  }
+
+
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+      }
+
+    });
+  }
+
+
+  /* =========================
+     ESC KEY CLOSE MODAL
+  ========================= */
+
+  document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape" && modal) {
+      modal.classList.remove("active");
+      document.body.classList.remove("modal-open");
+    }
+
+  });
+
+
+  /* =========================
+     IMAGE LAZY LOADING
+  ========================= */
+
+  const images = document.querySelectorAll("img");
+
+  images.forEach(img => {
+
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", "lazy");
+    }
+
+  });
+
+
+  /* =========================
+     CONTACT BUTTONS
+  ========================= */
+
+  document.querySelectorAll("[data-whatsapp]").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const number = button.getAttribute("data-whatsapp");
+
+      if (!number) return;
+
+      const message = encodeURIComponent(
+        "Hello, I would like to make an enquiry."
+      );
+
+      window.open(
+        `https://wa.me/${number}?text=${message}`,
+        "_blank"
+      );
+
+    });
+
+  });
+
+
+  /* =========================
+     BOOKING FORM
+  ========================= */
+
+  const bookingForm = document.getElementById("bookingForm");
+
+  if (bookingForm) {
+
+    bookingForm.addEventListener("submit", (e) => {
+
+      e.preventDefault();
+
+      const name = document.getElementById("bookingName")?.value || "";
+      const phone = document.getElementById("bookingPhone")?.value || "";
+      const date = document.getElementById("bookingDate")?.value || "";
+      const message = document.getElementById("bookingMessage")?.value || "";
+
+      const whatsappNumber = bookingForm.getAttribute(
+        "data-whatsapp-number"
+      );
+
+      if (!whatsappNumber) {
+        alert("Please configure the WhatsApp number.");
+        return;
+      }
+
+      const text = `
+New Enquiry
+
+Name: ${name}
+Phone: ${phone}
+Date: ${date}
+
+Message:
+${message}
+      `;
+
+      const whatsappURL =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+      window.open(whatsappURL, "_blank");
+
+    });
+
+  }
+
+
+  /* =========================
+     CURRENT YEAR
+  ========================= */
+
+  const yearElements = document.querySelectorAll(".current-year");
+
+  yearElements.forEach(element => {
+    element.textContent = new Date().getFullYear();
+  });
+
+
+  /* =========================
+     SCROLL REVEAL
+  ========================= */
+
+  const revealElements = document.querySelectorAll(
+    ".reveal, .profile-card, .service-card, .gallery-item"
+  );
+
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("visible");
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
+  });
+
+
+  /* =========================
+     HERO IMAGE SLIDESHOW
+  ========================= */
+
+  const hero = document.querySelector(".hero");
+
+  const heroImages = [
+    "images/hero-1.jpg",
+    "images/hero-2.jpg",
+    "images/hero-3.jpg",
+    "images/hero-4.jpg",
+    "images/hero-5.jpg",
+    "images/hero-6.jpg"
+  ];
+
+  if (hero && heroImages.length > 0) {
+
+    let currentHero = 0;
+
+    hero.style.backgroundImage =
+      `linear-gradient(90deg, rgba(0,0,0,.84), rgba(0,0,0,.25)), url("${heroImages[0]}")`;
+
+    setInterval(() => {
+
+      currentHero =
+        (currentHero + 1) % heroImages.length;
+
+      hero.style.backgroundImage =
+        `linear-gradient(90deg, rgba(0,0,0,.84), rgba(0,0,0,.25)), url("${heroImages[currentHero]}")`;
+
+    }, 5000);
+
+  }
+
+
+  /* =========================
+     GALLERY LIGHTBOX
+  ========================= */
+
+  const galleryItems = document.querySelectorAll(".gallery-item");
+
+  galleryItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+      const image = item.querySelector("img");
+
+      if (!image) return;
+
+      const lightbox = document.createElement("div");
+
+      lightbox.className = "image-lightbox";
+
+      lightbox.innerHTML = `
+        <div class="lightbox-overlay"></div>
+
+        <button class="lightbox-close" aria-label="Close">
+          &times;
+        </button>
+
+        <img src="${image.src}" alt="${image.alt || ""}">
+      `;
+
+      document.body.appendChild(lightbox);
+
+      setTimeout(() => {
+        lightbox.classList.add("active");
+      }, 20);
+
+      const closeLightbox = () => {
+
+        lightbox.classList.remove("active");
+
+        setTimeout(() => {
+          lightbox.remove();
+        }, 250);
+
+      };
+
+      lightbox
+        .querySelector(".lightbox-close")
+        .addEventListener("click", closeLightbox);
+
+      lightbox
+        .querySelector(".lightbox-overlay")
+        .addEventListener("click", closeLightbox);
+
+    });
+
+  });
+
+
+  /* =========================
+     PRELOADER
+  ========================= */
+
+  const preloader = document.getElementById("preloader");
+
+  if (preloader) {
+
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+        preloader.classList.add("hide");
+      }, 500);
+
+    });
+
+  }
+
+
+  /* =========================
+     ACTIVE NAVIGATION LINK
+  ========================= */
+
+  const sections = document.querySelectorAll("section[id]");
+  const navigationLinks = document.querySelectorAll(
+    '.nav-link[href^="#"]'
+  );
+
+  window.addEventListener("scroll", () => {
+
+    let currentSection = "";
+
+    sections.forEach(section => {
+
+      const sectionTop = section.offsetTop - 160;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
+      ) {
+        currentSection = section.getAttribute("id");
+      }
+
+    });
+
+    navigationLinks.forEach(link => {
+
+      link.classList.remove("active");
+
+      if (
+        link.getAttribute("href") === `#${currentSection}`
+      ) {
+        link.classList.add("active");
+      }
+
+    });
+
+  });
+
+
+  /* =========================
+     CONSOLE MESSAGE
+  ========================= */
+
+  console.log(
+    "Premium website loaded successfully."
+  );
 
 });
+```
 
-
-function createProfileCard(profile) {
-
-    return `
-
-        <article class="profile-card">
-
-            <div class="profile-image">
-
-                <img
-                    src="${profile.image}"
-                    alt="${profile.name}"
-                >
-
-                <span class="profile-number">
-                    #${profile.id}
-                </span>
-
-            </div>
-
-
-            <div class="profile-content">
-
-                <small>
-                    PROFILE #${profile.id}
-                </small>
-
-                <h3>
-                    ${profile.name}
-                </h3>
-
-                <p>
-                    ${profile.category}
-                    ·
-                    ${profile.location}
-                </p>
-
-
-                <div class="card-buttons">
-
-                    <a
-                        href="profile.html?id=${profile.id}"
-                        class="outline-btn"
-                    >
-                        View Profile
-                    </a>
-
-                    <a
-                        href="booking.html?id=${profile.id}"
-                        class="gold-btn"
-                    >
-                        Book Now
-                    </a>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-
-}
-
-
-function renderProfiles(list) {
-
-    const grid =
-        document.getElementById("profileGrid");
-
-    if (!grid) return;
-
-
-    if (list.length === 0) {
-
-        grid.innerHTML =
-            `<p class="no-results">
-                No profiles found.
-            </p>`;
-
-        return;
-
-    }
-
-
-    grid.innerHTML =
-        list.map(createProfileCard).join("");
-
-}
-
-
-function loadSingleProfile() {
-
-    const container =
-        document.getElementById("singleProfile");
-
-    if (!container) return;
-
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const id =
-        params.get("id");
-
-
-    const profile =
-        profiles.find(
-            p => p.id === id
-        );
-
-
-    if (!profile) {
-
-        container.innerHTML =
-            "<h2>Profile not found.</h2>";
-
-        return;
-
-    }
-
-
-    container.innerHTML = `
-
-        <div class="profile-detail-image">
-
-            <img
-                src="${profile.image}"
-                alt="${profile.name}"
-            >
-
-        </div>
-
-
-        <div class="profile-detail-content">
-
-            <small>
-                PROFILE #${profile.id}
-            </small>
-
-            <h1>
-                ${profile.name}
-            </h1>
-
-            <p class="gold-text">
-                ${profile.category}
-                ·
-                ${profile.location}
-            </p>
-
-            <p>
-                ${profile.description}
-            </p>
-
-
-            <div class="detail-row">
-                <span>Profile ID</span>
-                <strong>#${profile.id}</strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Category</span>
-                <strong>${profile.category}</strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Location</span>
-                <strong>${profile.location}</strong>
-            </div>
-
-            <div class="detail-row">
-                <span>Specialities</span>
-                <strong>${profile.skills}</strong>
-            </div>
-
-
-            <a
-                href="booking.html?id=${profile.id}"
-                class="gold-btn large-btn"
-            >
-                Book ${profile.name}
-            </a>
-
-        </div>
-
-    `;
-
-}
-
-
-function loadBookingProfile() {
-
-    const input =
-        document.getElementById(
-            "bookingProfile"
-        );
-
-    if (!input) return;
-
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const id =
-        params.get("id");
-
-
-    if (!id) return;
-
-
-    const profile =
-        profiles.find(
-            p => p.id === id
-        );
-
-
-    if (profile) {
-
-        input.value =
-            `#${profile.id} — ${profile.name}`;
-
-    }
-
-}
-
-
-function toggleMenu() {
-
-    const nav =
-        document.getElementById("navLinks");
-
-    nav.classList.toggle("mobile-active");
-
-}
 
