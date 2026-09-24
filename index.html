@@ -25,10 +25,134 @@
 </div><div class="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
 </section>
 
-<section class="section"><div class="container">
-<div class="section-heading reveal"><div><p class="eyebrow">THE COLLECTION</p><h2>Featured Profiles</h2></div><a href="profiles.html" class="outline-btn">View All</a></div>
-<div id="featuredProfiles" class="profile-grid"></div>
-</div></section>
+<section class="featured-profiles" id="profiles">
+  <div class="section-heading">
+    <span>OUR TALENT</span>
+    <h2>Featured Profiles</h2>
+    <p>Explore our featured professional profiles.</p>
+  </div>
+
+  <div class="profile-grid">
+
+```
+<article class="profile-card" data-profile="0">
+  <div class="profile-image">
+    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Profile 1">
+    <span class="profile-status">Available</span>
+  </div>
+  <div class="profile-card-info">
+    <h3>Alina</h3>
+    <p>Fashion Model · Mumbai</p>
+    <button class="view-profile">View Profile</button>
+  </div>
+</article>
+
+<article class="profile-card" data-profile="1">
+  <div class="profile-image">
+    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85" alt="Profile 2">
+    <span class="profile-status">Available</span>
+  </div>
+  <div class="profile-card-info">
+    <h3>Sofia</h3>
+    <p>Editorial Model · Delhi</p>
+    <button class="view-profile">View Profile</button>
+  </div>
+</article>
+
+<article class="profile-card" data-profile="2">
+  <div class="profile-image">
+    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85" alt="Profile 3">
+    <span class="profile-status">Available</span>
+  </div>
+  <div class="profile-card-info">
+    <h3>Kiara</h3>
+    <p>Commercial Model · Bangalore</p>
+    <button class="view-profile">View Profile</button>
+  </div>
+</article>
+
+<article class="profile-card" data-profile="3">
+  <div class="profile-image">
+    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85" alt="Profile 4">
+    <span class="profile-status">Available</span>
+  </div>
+  <div class="profile-card-info">
+    <h3>Arjun</h3>
+    <p>Fashion Model · Mumbai</p>
+    <button class="view-profile">View Profile</button>
+  </div>
+</article>
+
+<article class="profile-card" data-profile="4">
+  <div class="profile-image">
+    <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85" alt="Profile 5">
+    <span class="profile-status">Available</span>
+  </div>
+  <div class="profile-card-info">
+    <h3>Ryan</h3>
+    <p>Commercial Model · Delhi</p>
+    <button class="view-profile">View Profile</button>
+  </div>
+</article>
+
+<article class="profile-card" data-profile="5">
+  <div class="profile-image">
+    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=900&q=85" alt="Profile 6">
+    <span class="profile-status">Available</span>
+  </div>
+  <div class="profile-card-info">
+    <h3>Maya</h3>
+    <p>Editorial Model · Hyderabad</p>
+    <button class="view-profile">View Profile</button>
+  </div>
+</article>
+```
+
+  </div>
+</section>
+
+<!-- PROFILE DETAILS -->
+
+<div class="profile-overlay" id="profileOverlay">
+  <div class="profile-modal">
+
+```
+<button class="profile-close" id="profileClose">&times;</button>
+
+<div class="profile-detail-image">
+  <img id="detailImage" src="" alt="Profile">
+</div>
+
+<div class="profile-detail-content">
+  <span class="detail-label">FEATURED PROFILE</span>
+
+  <h2 id="detailName"></h2>
+  <p class="detail-location" id="detailLocation"></p>
+
+  <div class="detail-divider"></div>
+
+  <h4>About</h4>
+  <p id="detailAbout"></p>
+
+  <h4>Professional Services</h4>
+  <div class="service-list" id="detailServices"></div>
+
+  <div class="contact-box">
+    <div>
+      <small>CONTACT</small>
+      <strong id="detailPhone"></strong>
+    </div>
+
+    <a id="detailContact" href="#" class="profile-enquiry">
+      Send Enquiry
+    </a>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
 
 <section class="statement-section"><div class="container statement-content reveal">
 <p class="eyebrow">A DIFFERENT STANDARD</p><h2>Professional talent deserves a professional presentation.</h2>
