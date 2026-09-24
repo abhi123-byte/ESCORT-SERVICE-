@@ -1,178 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="LUXE — premium professional talent directory and booking platform.">
-<title>LUXE — Premium Talent</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="LUXE — Premium professional talent directory and booking platform."
+  >
+
+  <title>LUXE — Premium Talent</title>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<header class="navbar" id="navbar">
-<a href="index.html" class="logo">LUXE<span>.</span></a>
-<nav id="navLinks">
-<a href="index.html">Home</a><a href="profiles.html">Profiles</a><a href="categories.html">Categories</a><a href="locations.html">Locations</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-</nav>
-<a href="booking.html" class="gold-btn nav-book">Book Now</a><button class="menu-btn" id="menuBtn">☰</button>
-</header>
 
-<main>
-<section class="hero">
-<div class="hero-overlay"></div><div class="container hero-content reveal">
-<p class="eyebrow">HIGH CLASS · SEXY · INDEPENDENT</p>
-<h1>Female Escorts<br><em>Ready To Serve.</em></h1>
-<p class="hero-description">Best Premium Escorts In Andheri, Female Escorts Booking, Available For Service In 24 Hours.</p>
-<div class="hero-buttons"><a href="profiles.html" class="gold-btn">Explore Escorts</a><a href="booking.html" class="outline-btn">Book an Escort</a></div>
-</div><div class="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
-</section>
+  <!-- =========================
+       NAVBAR
+  ========================== -->
 
-<section class="featured-profiles" id="profiles">
-  <div class="section-heading">
-    <span>OUR TALENT</span>
-    <h2>Featured Profiles</h2>
-    <p>Explore our featured professional profiles.</p>
-  </div>
+  <header class="navbar" id="navbar">
 
-  <div class="profile-grid">
+    <a href="index.html" class="logo">
+      LUXE<span>.</span>
+    </a>
 
-```
-<article class="profile-card" data-profile="0">
-  <div class="profile-image">
-    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Profile 1">
-    <span class="profile-status">Available</span>
-  </div>
-  <div class="profile-card-info">
-    <h3>Alina</h3>
-    <p>Fashion Model · Mumbai</p>
-    <button class="view-profile">View Profile</button>
-  </div>
-</article>
+    <nav id="navLinks">
 
-<article class="profile-card" data-profile="1">
-  <div class="profile-image">
-    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85" alt="Profile 2">
-    <span class="profile-status">Available</span>
-  </div>
-  <div class="profile-card-info">
-    <h3>Sofia</h3>
-    <p>Editorial Model · Delhi</p>
-    <button class="view-profile">View Profile</button>
-  </div>
-</article>
+      <a href="index.html">Home</a>
+      <a href="profiles.html">Profiles</a>
+      <a href="categories.html">Categories</a>
+      <a href="locations.html">Locations</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
 
-<article class="profile-card" data-profile="2">
-  <div class="profile-image">
-    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85" alt="Profile 3">
-    <span class="profile-status">Available</span>
-  </div>
-  <div class="profile-card-info">
-    <h3>Kiara</h3>
-    <p>Commercial Model · Bangalore</p>
-    <button class="view-profile">View Profile</button>
-  </div>
-</article>
+    </nav>
 
-<article class="profile-card" data-profile="3">
-  <div class="profile-image">
-    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85" alt="Profile 4">
-    <span class="profile-status">Available</span>
-  </div>
-  <div class="profile-card-info">
-    <h3>Arjun</h3>
-    <p>Fashion Model · Mumbai</p>
-    <button class="view-profile">View Profile</button>
-  </div>
-</article>
+    <a href="booking.html" class="gold-btn nav-book">
+      Book Now
+    </a>
 
-<article class="profile-card" data-profile="4">
-  <div class="profile-image">
-    <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85" alt="Profile 5">
-    <span class="profile-status">Available</span>
-  </div>
-  <div class="profile-card-info">
-    <h3>Ryan</h3>
-    <p>Commercial Model · Delhi</p>
-    <button class="view-profile">View Profile</button>
-  </div>
-</article>
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
 
-<article class="profile-card" data-profile="5">
-  <div class="profile-image">
-    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=900&q=85" alt="Profile 6">
-    <span class="profile-status">Available</span>
-  </div>
-  <div class="profile-card-info">
-    <h3>Maya</h3>
-    <p>Editorial Model · Hyderabad</p>
-    <button class="view-profile">View Profile</button>
-  </div>
-</article>
-```
+  </header>
 
-  </div>
-</section>
 
-<!-- PROFILE DETAILS -->
+  <!-- =========================
+       MAIN
+  ========================== -->
 
-<div class="profile-overlay" id="profileOverlay">
-  <div class="profile-modal">
+  <main>
 
-```
-<button class="profile-close" id="profileClose">&times;</button>
+    <!-- HERO -->
 
-<div class="profile-detail-image">
-  <img id="detailImage" src="" alt="Profile">
-</div>
+    <section class="hero">
 
-<div class="profile-detail-content">
-  <span class="detail-label">FEATURED PROFILE</span>
+      <div class="hero-overlay"></div>
 
-  <h2 id="detailName"></h2>
-  <p class="detail-location" id="detailLocation"></p>
+      <div class="container hero-content reveal">
 
-  <div class="detail-divider"></div>
+        <p class="eyebrow">
+          HIGH CLASS · PROFESSIONAL · INDEPENDENT
+        </p>
 
-  <h4>About</h4>
-  <p id="detailAbout"></p>
+        <h1>
+          Discover Exceptional<br>
+          <em>Professional Talent.</em>
+        </h1>
 
-  <h4>Professional Services</h4>
-  <div class="service-list" id="detailServices"></div>
+        <p class="hero-description">
+          Explore curated professional profiles for fashion,
+          editorial, commercial, creative and promotional work.
+        </p>
 
-  <div class="contact-box">
-    <div>
-      <small>CONTACT</small>
-      <strong id="detailPhone"></strong>
+        <div class="hero-buttons">
+
+          <a href="profiles.html" class="gold-btn">
+            Explore Profiles
+          </a>
+
+          <a href="booking.html" class="outline-btn">
+            Make an Enquiry
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="scroll-note">
+        SCROLL TO EXPLORE <span>↓</span>
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURED PROFILES
+    ========================== -->
+
+    <section
+      class="featured-profiles"
+      id="profiles"
+    >
+
+      <div class="section-heading reveal">
+
+        <span>OUR TALENT</span>
+
+        <h2>
+          Featured Profiles
+        </h2>
+
+        <p>
+          Explore our featured professional profiles.
+        </p>
+
+      </div>
+
+
+      <div class="profile-grid">
+
+
+        <!-- PROFILE 1 -->
+
+        <article
+          class="profile-card reveal"
+          data-profile="0"
+        >
+
+          <div class="profile-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+              alt="Alina professional profile"
+              loading="lazy"
+            >
+
+            <span class="profile-status">
+              Available
+            </span>
+
+          </div>
+
+          <div class="profile-card-info">
+
+            <h3>
+              Alina
+            </h3>
+
+            <p>
+              Fashion Model · Mumbai
+            </p>
+
+            <button
+              type="button"
+              class="view-profile"
+            >
+              View Profile
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROFILE 2 -->
+
+        <article
+          class="profile-card reveal"
+          data-profile="1"
+        >
+
+          <div class="profile-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85"
+              alt="Sofia professional profile"
+              loading="lazy"
+            >
+
+            <span class="profile-status">
+              Available
+            </span>
+
+          </div>
+
+          <div class="profile-card-info">
+
+            <h3>
+              Sofia
+            </h3>
+
+            <p>
+              Editorial Model · Delhi
+            </p>
+
+            <button
+              type="button"
+              class="view-profile"
+            >
+              View Profile
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROFILE 3 -->
+
+        <article
+          class="profile-card reveal"
+          data-profile="2"
+        >
+
+          <div class="profile-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85"
+              alt="Kiara professional profile"
+              loading="lazy"
+            >
+
+            <span class="profile-status">
+              Available
+            </span>
+
+          </div>
+
+          <div class="profile-card-info">
+
+            <h3>
+              Kiara
+            </h3>
+
+            <p>
+              Commercial Model · Bangalore
+            </p>
+
+            <button
+              type="button"
+              class="view-profile"
+            >
+              View Profile
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROFILE 4 -->
+
+        <article
+          class="profile-card reveal"
+          data-profile="3"
+        >
+
+          <div class="profile-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85"
+              alt="Arjun professional profile"
+              loading="lazy"
+            >
+
+            <span class="profile-status">
+              Available
+            </span>
+
+          </div>
+
+          <div class="profile-card-info">
+
+            <h3>
+              Arjun
+            </h3>
+
+            <p>
+              Fashion Model · Mumbai
+            </p>
+
+            <button
+              type="button"
+              class="view-profile"
+            >
+              View Profile
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROFILE 5 -->
+
+        <article
+          class="profile-card reveal"
+          data-profile="4"
+        >
+
+          <div class="profile-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85"
+              alt="Ryan professional profile"
+              loading="lazy"
+            >
+
+            <span class="profile-status">
+              Available
+            </span>
+
+          </div>
+
+          <div class="profile-card-info">
+
+            <h3>
+              Ryan
+            </h3>
+
+            <p>
+              Commercial Model · Delhi
+            </p>
+
+            <button
+              type="button"
+              class="view-profile"
+            >
+              View Profile
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- PROFILE 6 -->
+
+        <article
+          class="profile-card reveal"
+          data-profile="5"
+        >
+
+          <div class="profile-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=900&q=85"
+              alt="Maya professional profile"
+              loading="lazy"
+            >
+
+            <span class="profile-status">
+              Available
+            </span>
+
+          </div>
+
+          <div class="profile-card-info">
+
+            <h3>
+              Maya
+            </h3>
+
+            <p>
+              Editorial Model · Hyderabad
+            </p>
+
+            <button
+              type="button"
+              class="view-profile"
+            >
+              View Profile
+            </button>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROFILE POPUP
+    ========================== -->
+
+    <div
+      class="profile-overlay"
+      id="profileOverlay"
+      aria-hidden="true"
+    >
+
+      <div
+        class="profile-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detailName"
+      >
+
+        <button
+          class="profile-close"
+          id="profileClose"
+          type="button"
+          aria-label="Close profile"
+        >
+          &times;
+        </button>
+
+
+        <!-- PROFILE IMAGE -->
+
+        <div class="profile-detail-image">
+
+          <img
+            id="detailImage"
+            src=""
+            alt="Profile"
+          >
+
+        </div>
+
+
+        <!-- PROFILE INFORMATION -->
+
+        <div class="profile-detail-content">
+
+          <span class="detail-label">
+            FEATURED PROFILE
+          </span>
+
+          <h2 id="detailName"></h2>
+
+          <p
+            class="detail-location"
+            id="detailLocation"
+          ></p>
+
+          <div class="detail-divider"></div>
+
+
+          <h4>
+            About
+          </h4>
+
+          <p id="detailAbout"></p>
+
+
+          <h4>
+            Professional Services
+          </h4>
+
+          <div
+            class="service-list"
+            id="detailServices"
+          ></div>
+
+
+          <!-- CONTACT -->
+
+          <div class="contact-box">
+
+            <div>
+
+              <small>
+                CONTACT
+              </small>
+
+              <strong id="detailPhone"></strong>
+
+            </div>
+
+            <a
+              id="detailContact"
+              href="#"
+              class="profile-enquiry"
+              target="_blank"
+              rel="noopener"
+            >
+              Send Enquiry
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <a id="detailContact" href="#" class="profile-enquiry">
-      Send Enquiry
-    </a>
-  </div>
-</div>
-```
 
-  </div>
-</div>
+    <!-- =========================
+         STATEMENT
+    ========================== -->
+
+    <section class="statement-section">
+
+      <div class="container statement-content reveal">
+
+        <p class="eyebrow">
+          A DIFFERENT STANDARD
+        </p>
+
+        <h2>
+          Professional talent deserves
+          a professional presentation.
+        </h2>
+
+        <p>
+          A refined discovery and booking experience
+          designed for legitimate creative and
+          commercial work.
+        </p>
+
+      </div>
+
+    </section>
 
 
-<section class="statement-section"><div class="container statement-content reveal">
-<p class="eyebrow">A DIFFERENT STANDARD</p><h2>Professional talent deserves a professional presentation.</h2>
-<p>A refined discovery and booking experience designed for legitimate creative and commercial work.</p>
-</div></section>
+    <!-- =========================
+         CATEGORIES
+    ========================== -->
 
-<section class="section"><div class="container">
-<div class="section-heading reveal"><div><p class="eyebrow">DISCOVER</p><h2>Explore By Category</h2></div></div>
-<div class="category-grid">
-<a href="profiles.html?category=Model" class="category-card reveal"><span>01</span><h3>Models</h3><p>Fashion · Editorial · Commercial</p></a>
-<a href="profiles.html?category=Creator" class="category-card reveal"><span>02</span><h3>Creators</h3><p>Lifestyle · Digital · Campaigns</p></a>
-<a href="profiles.html?category=Artist" class="category-card reveal"><span>03</span><h3>Artists</h3><p>Creative · Studio · Visual</p></a>
-</div></div></section>
+    <section class="section">
 
-<section class="luxury-strip"><div class="container strip-grid">
-<div><strong>01</strong><span>Curated Profiles</span></div><div><strong>02</strong><span>Professional Booking</span></div><div><strong>03</strong><span>Premium Experience</span></div>
-</div></section>
+      <div class="container">
 
-<section class="booking-banner"><div class="container reveal"><p class="eyebrow">PRIVATE ENQUIRY</p><h2>Ready to create something exceptional?</h2><a href="booking.html" class="gold-btn">Start a Booking</a></div></section>
-</main>
-<footer></footer>
-<script src="js/profiles.js"></script><script src="js/script.js"></script>
-</body></html>
+        <div class="section-heading reveal">
+
+          <div>
+
+            <p class="eyebrow">
+              DISCOVER
+            </p>
+
+            <h2>
+              Explore By Category
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+          <a
+            href="profiles.html?category=Model"
+            class="category-card reveal"
+          >
+
+            <span>
+              01
+            </span>
+
+            <h3>
+              Models
+            </h3>
+
+            <p>
+              Fashion · Editorial · Commercial
+            </p>
+
+          </a>
+
+
+          <a
+            href="profiles.html?category=Creator"
+            class="category-card reveal"
+          >
+
+            <span>
+              02
+            </span>
+
+            <h3>
+              Creators
+            </h3>
+
+            <p>
+              Lifestyle · Digital · Campaigns
+            </p>
+
+          </a>
+
+
+          <a
+            href="profiles.html?category=Artist"
+            class="category-card reveal"
+          >
+
+            <span>
+              03
+            </span>
+
+            <h3>
+              Artists
+            </h3>
+
+            <p>
+              Creative · Studio · Visual
+            </p>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LUXURY STRIP
+    ========================== -->
+
+    <section class="luxury-strip">
+
+      <div class="container strip-grid">
+
+        <div>
+
+          <strong>
+            01
+          </strong>
+
+          <span>
+            Curated Profiles
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            02
+          </strong>
+
+          <span>
+            Professional Booking
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            03
+          </strong>
+
+          <span>
+            Premium Experience
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         BOOKING BANNER
+    ========================== -->
+
+    <section class="booking-banner">
+
+      <div class="container reveal">
+
+        <p class="eyebrow">
+          PRIVATE ENQUIRY
+        </p>
+
+        <h2>
+          Ready to create something exceptional?
+        </h2>
+
+        <a
+          href="booking.html"
+          class="gold-btn"
+        >
+          Start a Booking
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <a
+          href="index.html"
+          class="logo"
+        >
+          LUXE<span>.</span>
+        </a>
+
+        <p>
+          Premium professional talent directory
+          and booking platform.
+        </p>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p>
+          © 2026 LUXE. All rights reserved.
+        </p>
+
+        <div>
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+          <a href="booking.html">
+            Booking
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="js/profiles.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
