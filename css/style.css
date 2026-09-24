@@ -821,9 +821,9 @@ button {
 
 .statement-content h2 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(40px, 5.5vw, 70px);
+  font-size: clamp(25px, 3vw, 45px);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.1;
   margin-bottom: 25px;
 }
 
