@@ -1,10 +1,5 @@
 ```javascript
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* =====================================================
-     PROFILE DATABASE
-     Replace the Unsplash URLs with your own photos later.
-  ===================================================== */
+document.addEventListener("DOMContentLoaded", function () {
 
   const profiles = [
 
@@ -14,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 24,
       location: "Andheri, Mumbai",
       category: "Model",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85",
-      description: "Professional independent talent available for private enquiries, events and legitimate bookings.",
-      services: "Events · Social appearances · Modeling · Private enquiries",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85",
+      description: "Professional independent talent available for enquiries and legitimate bookings.",
+      services: "Events · Social appearances · Modeling",
       phone: "+919000000001",
       featured: true
     },
@@ -27,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 26,
       location: "Andheri, Mumbai",
       category: "Creator",
-      image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=85",
-      description: "Professional talent offering a discreet and polished booking experience.",
-      services: "Events · Lifestyle appearances · Creative projects",
+      image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85",
+      description: "Professional talent available for selected enquiries and bookings.",
+      services: "Events · Lifestyle · Creative projects",
       phone: "+919000000002",
       featured: true
     },
@@ -40,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 25,
       location: "Mumbai",
       category: "Model",
-      image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1000&q=85",
-      description: "Independent professional talent available for selected bookings and enquiries.",
+      image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85",
+      description: "Independent professional talent available for selected bookings.",
       services: "Fashion · Events · Commercial work",
       phone: "+919000000003",
       featured: true
@@ -53,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 27,
       location: "Andheri, Mumbai",
       category: "Artist",
-      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1000&q=85",
-      description: "Creative professional available for appointments and event-related bookings.",
+      image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=85",
+      description: "Creative professional available for appointments and event-related enquiries.",
       services: "Events · Creative projects · Visual work",
       phone: "+919000000004",
       featured: true
@@ -66,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 23,
       location: "Mumbai",
       category: "Creator",
-      image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1000&q=85",
-      description: "Independent creator offering a professional and discreet enquiry experience.",
+      image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=900&q=85",
+      description: "Independent creator available for professional enquiries.",
       services: "Lifestyle · Events · Appearances",
       phone: "+919000000005",
       featured: true
@@ -79,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 28,
       location: "Andheri, Mumbai",
       category: "Model",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85",
-      description: "Professional model available for selected private and commercial enquiries.",
+      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85",
+      description: "Professional model available for selected commercial enquiries.",
       services: "Modeling · Events · Commercial work",
       phone: "+919000000006",
       featured: true
@@ -92,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 25,
       location: "Mumbai",
       category: "Model",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85",
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=85",
       description: "Professional talent available for selected bookings.",
       services: "Events · Modeling · Appearances",
       phone: "+919000000007",
@@ -105,51 +100,25 @@ document.addEventListener("DOMContentLoaded", () => {
       age: 26,
       location: "Mumbai",
       category: "Creator",
-      image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85",
+      image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85",
       description: "Independent professional talent available for enquiries.",
       services: "Events · Creative work · Appearances",
       phone: "+919000000008",
-      featured: false
-    },
-
-    {
-      id: 9,
-      name: "Charlotte",
-      age: 24,
-      location: "Delhi",
-      category: "Artist",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=85",
-      description: "Creative professional available for selected appointments.",
-      services: "Events · Creative work · Studio projects",
-      phone: "+919000000009",
-      featured: false
-    },
-
-    {
-      id: 10,
-      name: "Grace",
-      age: 27,
-      location: "Bengaluru",
-      category: "Model",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=85",
-      description: "Professional independent talent available for enquiries.",
-      services: "Fashion · Events · Commercial work",
-      phone: "+919000000010",
       featured: false
     }
 
   ];
 
 
-  /* =====================================================
+  /* =========================================
      CREATE PROFILE CARD
-  ===================================================== */
+  ========================================= */
 
-  function createCard(profile) {
+  function createProfileCard(profile) {
 
     return `
       <article
-        class="profile-card reveal"
+        class="profile-card"
         data-category="${profile.category}"
         data-location="${profile.location}">
 
@@ -174,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </p>
 
           <button
+            type="button"
             class="gold-btn profile-view-btn"
             data-profile-id="${profile.id}">
             View Profile
@@ -186,85 +156,92 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =====================================================
-     HOMEPAGE
-     ONLY SIX FEATURED PROFILES
-  ===================================================== */
+  /* =========================================
+     HOMEPAGE — ONLY 6 FEATURED PROFILES
+  ========================================= */
 
   const featuredContainer =
     document.getElementById("featuredProfiles");
 
   if (featuredContainer) {
 
-    const featured =
-      profiles
-        .filter(profile => profile.featured)
-        .slice(0, 6);
+    const featuredProfiles =
+      profiles.filter(function (profile) {
+        return profile.featured === true;
+      }).slice(0, 6);
 
     featuredContainer.innerHTML =
-      featured.map(createCard).join("");
+      featuredProfiles
+        .map(createProfileCard)
+        .join("");
 
+    console.log(
+      "Featured profiles loaded:",
+      featuredProfiles.length
+    );
   }
 
 
-  /* =====================================================
-     PROFILES PAGE
-     ALL PROFILES
-  ===================================================== */
+  /* =========================================
+     ALL PROFILES PAGE
+  ========================================= */
 
-  const allProfiles =
+  const allProfilesContainer =
     document.getElementById("allProfiles");
 
-  const searchInput =
+  const search =
     document.getElementById("profileSearch");
 
-  const categoryFilter =
+  const category =
     document.getElementById("categoryFilter");
 
-  const locationFilter =
+  const location =
     document.getElementById("locationFilter");
 
 
-  function displayAllProfiles() {
+  function showAllProfiles() {
 
-    if (!allProfiles) return;
+    if (!allProfilesContainer) return;
 
-    const search =
-      searchInput
-        ? searchInput.value.toLowerCase().trim()
+    const searchValue =
+      search
+        ? search.value.toLowerCase().trim()
         : "";
 
-    const category =
-      categoryFilter
-        ? categoryFilter.value
+    const categoryValue =
+      category
+        ? category.value
         : "";
 
-    const location =
-      locationFilter
-        ? locationFilter.value
+    const locationValue =
+      location
+        ? location.value
         : "";
 
 
-    const filtered =
-      profiles.filter(profile => {
+    const results =
+      profiles.filter(function (profile) {
 
-        const searchable =
-          `${profile.name}
-           ${profile.category}
-           ${profile.location}`
-            .toLowerCase();
+        const text =
+          (
+            profile.name +
+            " " +
+            profile.category +
+            " " +
+            profile.location
+          ).toLowerCase();
 
         const matchesSearch =
-          !search ||
-          searchable.includes(search);
+          !searchValue ||
+          text.includes(searchValue);
 
         const matchesCategory =
-          !category ||
-          profile.category === category;
+          !categoryValue ||
+          profile.category === categoryValue;
 
         const matchesLocation =
-          !location ||
-          profile.location.includes(location);
+          !locationValue ||
+          profile.location.includes(locationValue);
 
         return (
           matchesSearch &&
@@ -275,9 +252,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
 
-    if (filtered.length === 0) {
+    if (results.length === 0) {
 
-      allProfiles.innerHTML = `
+      allProfilesContainer.innerHTML = `
         <div class="no-profiles">
           <h3>No profiles found</h3>
           <p>Try another search or filter.</p>
@@ -288,43 +265,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    allProfiles.innerHTML =
-      filtered.map(createCard).join("");
-
+    allProfilesContainer.innerHTML =
+      results
+        .map(createProfileCard)
+        .join("");
   }
 
 
-  if (allProfiles) {
+  if (allProfilesContainer) {
 
-    displayAllProfiles();
+    showAllProfiles();
 
-    if (searchInput) {
-      searchInput.addEventListener(
+    if (search) {
+      search.addEventListener(
         "input",
-        displayAllProfiles
+        showAllProfiles
       );
     }
 
-    if (categoryFilter) {
-      categoryFilter.addEventListener(
+    if (category) {
+      category.addEventListener(
         "change",
-        displayAllProfiles
+        showAllProfiles
       );
     }
 
-    if (locationFilter) {
-      locationFilter.addEventListener(
+    if (location) {
+      location.addEventListener(
         "change",
-        displayAllProfiles
+        showAllProfiles
       );
     }
 
   }
 
 
-  /* =====================================================
-     PROFILE DETAIL MODAL
-  ===================================================== */
+  /* =========================================
+     PROFILE DETAILS
+  ========================================= */
 
   const modal =
     document.createElement("div");
@@ -332,26 +310,21 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.className = "profile-modal";
 
   modal.innerHTML = `
-
     <div class="profile-modal-overlay"></div>
 
     <div class="profile-modal-box">
 
       <button
-        class="profile-modal-close"
-        aria-label="Close">
+        type="button"
+        class="profile-modal-close">
         ×
       </button>
 
-      <div class="profile-modal-image-wrap">
-
-        <img
-          class="profile-modal-image"
-          src=""
-          alt=""
-        >
-
-      </div>
+      <img
+        class="profile-modal-image"
+        src=""
+        alt=""
+      >
 
       <div class="profile-modal-content">
 
@@ -374,15 +347,15 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="profile-modal-buttons">
 
           <a
-            href="#"
-            class="gold-btn profile-call">
+            class="gold-btn profile-call"
+            href="#">
             Call / Enquire
           </a>
 
           <a
+            class="outline-btn profile-whatsapp"
             href="#"
-            target="_blank"
-            class="outline-btn profile-whatsapp">
+            target="_blank">
             WhatsApp
           </a>
 
@@ -396,11 +369,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(modal);
 
 
-  /* =====================================================
+  /* =========================================
      OPEN PROFILE
-  ===================================================== */
+  ========================================= */
 
-  document.addEventListener("click", event => {
+  document.addEventListener("click", function (event) {
 
     const button =
       event.target.closest(".profile-view-btn");
@@ -411,7 +384,9 @@ document.addEventListener("DOMContentLoaded", () => {
       Number(button.dataset.profileId);
 
     const profile =
-      profiles.find(item => item.id === id);
+      profiles.find(function (item) {
+        return item.id === id;
+      });
 
     if (!profile) return;
 
@@ -424,54 +399,46 @@ document.addEventListener("DOMContentLoaded", () => {
       ".profile-modal-image"
     ).alt = profile.name;
 
-
     modal.querySelector(
       ".profile-modal-category"
     ).textContent =
       profile.category;
-
 
     modal.querySelector(
       ".profile-modal-name"
     ).textContent =
       profile.name;
 
-
     modal.querySelector(
       ".profile-modal-meta"
     ).textContent =
       `${profile.age} · ${profile.location}`;
-
 
     modal.querySelector(
       ".profile-modal-description"
     ).textContent =
       profile.description;
 
-
     modal.querySelector(
       ".profile-modal-services"
     ).textContent =
       profile.services;
 
-
-    const callButton =
-      modal.querySelector(".profile-call");
-
-    callButton.href =
+    modal.querySelector(
+      ".profile-call"
+    ).href =
       `tel:${profile.phone}`;
 
 
-    const whatsapp =
-      modal.querySelector(".profile-whatsapp");
-
-    const message =
+    const whatsappMessage =
       encodeURIComponent(
-        `Hello, I would like to enquire about ${profile.name} (Profile ${String(profile.id).padStart(2, "0")}).`
+        `Hello, I would like to enquire about ${profile.name}.`
       );
 
-    whatsapp.href =
-      `https://wa.me/${profile.phone.replace(/\D/g, "")}?text=${message}`;
+    modal.querySelector(
+      ".profile-whatsapp"
+    ).href =
+      `https://wa.me/${profile.phone.replace(/\D/g, "")}?text=${whatsappMessage}`;
 
 
     modal.classList.add("active");
@@ -482,9 +449,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =====================================================
-     CLOSE MODAL
-  ===================================================== */
+  /* =========================================
+     CLOSE PROFILE
+  ========================================= */
 
   function closeProfile() {
 
@@ -495,25 +462,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  modal
-    .querySelector(".profile-modal-close")
-    .addEventListener(
-      "click",
-      closeProfile
-    );
+  modal.querySelector(
+    ".profile-modal-close"
+  ).addEventListener(
+    "click",
+    closeProfile
+  );
 
 
-  modal
-    .querySelector(".profile-modal-overlay")
-    .addEventListener(
-      "click",
-      closeProfile
-    );
+  modal.querySelector(
+    ".profile-modal-overlay"
+  ).addEventListener(
+    "click",
+    closeProfile
+  );
 
 
   document.addEventListener(
     "keydown",
-    event => {
+    function (event) {
 
       if (
         event.key === "Escape" &&
@@ -527,3 +494,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 ```
+
