@@ -1,300 +1,374 @@
-```javascript
 document.addEventListener("DOMContentLoaded", () => {
 
-  const navbar = document.getElementById("navbar");
-  const menuBtn = document.getElementById("menuBtn");
-  const navLinks = document.getElementById("navLinks");
+    const featured =
+        document.getElementById("featuredProfiles");
 
+    if (featured) {
 
-  /* NAVBAR */
+        featured.innerHTML =
+            profiles.slice(0, 6)
+            .map(createProfileCard)
+            .join("");
 
-  const updateNavbar = () => {
-    if (navbar) {
-      navbar.classList.toggle(
-        "scrolled",
-        window.scrollY > 35
-      );
     }
-  };
-
-  updateNavbar();
-
-  window.addEventListener(
-    "scroll",
-    updateNavbar,
-    { passive: true }
-  );
 
 
-  /* MOBILE MENU */
+    const profileGrid =
+        document.getElementById("profileGrid");
 
-  if (menuBtn && navLinks) {
+    if (profileGrid) {
 
-    menuBtn.setAttribute(
-      "aria-expanded",
-      "false"
+        renderProfiles(profiles);
+
+    }
+
+
+    const search =
+        document.getElementById("search");
+
+    const category =
+        document.getElementById("category");
+
+    const location =
+        document.getElementById("location");
+
+
+    function filterProfiles() {
+
+        let result = profiles;
+
+        const searchValue =
+            search?.value.toLowerCase() || "";
+
+        const categoryValue =
+            category?.value || "";
+
+        const locationValue =
+            location?.value || "";
+
+
+        result = result.filter(profile => {
+
+            const text =
+                `${profile.name}
+                 ${profile.category}
+                 ${profile.location}`.toLowerCase();
+
+            return text.includes(searchValue);
+
+        });
+
+
+        if (categoryValue) {
+
+            result =
+                result.filter(
+                    p => p.category === categoryValue
+                );
+
+        }
+
+
+        if (locationValue) {
+
+            result =
+                result.filter(
+                    p => p.location === locationValue
+                );
+
+        }
+
+
+        renderProfiles(result);
+
+    }
+
+
+    search?.addEventListener(
+        "input",
+        filterProfiles
     );
 
-    menuBtn.addEventListener("click", () => {
+    category?.addEventListener(
+        "change",
+        filterProfiles
+    );
 
-      navLinks.classList.toggle("open");
+    location?.addEventListener(
+        "change",
+        filterProfiles
+    );
 
-      const isOpen =
-        navLinks.classList.contains("open");
 
-      menuBtn.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
+    const menu =
+        document.querySelector(".menu-btn");
 
-      menuBtn.textContent =
-        isOpen ? "×" : "☰";
+    menu?.addEventListener(
+        "click",
+        toggleMenu
+    );
+
+
+    const navbar =
+        document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+
+            navbar.classList.add("scrolled");
+
+        } else {
+
+            navbar.classList.remove("scrolled");
+
+        }
+
     });
 
 
-    navLinks
-      .querySelectorAll("a")
-      .forEach(link => {
+    loadSingleProfile();
 
-        link.addEventListener("click", () => {
+    loadBookingProfile();
 
-          navLinks.classList.remove("open");
-
-          menuBtn.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-          menuBtn.textContent = "☰";
-        });
-
-      });
-  }
+});
 
 
-  /* FEATURED MODELS */
+function createProfileCard(profile) {
 
-  const featuredProfiles =
-    document.getElementById("featuredProfiles");
-
-const models = [
-
-  {
-    name: "Sofia",
-    location: "Andheri West, Mumbai",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
-    services: "Dinner • Events • Social Companionship",
-    phone: "+91 98765 43210",
-    profile: "model1.html"
-  },
-
-  {
-    name: "Alina",
-    location: "Andheri East, Mumbai",
-    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=85",
-    services: "Dinner • Events • Social Companionship",
-    phone: "+91 98765 43211",
-    profile: "model2.html"
-  },
-
-  {
-    name: "Mia",
-    location: "Andheri West, Mumbai",
-    image: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=800&q=85",
-    services: "Dinner • Events • Social Companionship",
-    phone: "+91 98765 43212",
-    profile: "model3.html"
-  },
-
-  {
-    name: "Emma",
-    location: "Andheri, Mumbai",
-    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=85",
-    services: "Dinner • Events • Social Companionship",
-    phone: "+91 98765 43213",
-    profile: "model4.html"
-  },
-
-  {
-    name: "Sara",
-    location: "Andheri West, Mumbai",
-    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=85",
-    services: "Dinner • Events • Social Companionship",
-    phone: "+91 98765 43214",
-    profile: "model5.html"
-  },
-
-  {
-    name: "Riya",
-    location: "Andheri East, Mumbai",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=85",
-    services: "Dinner • Events • Social Companionship",
-    phone: "+91 98765 43215",
-    profile: "model6.html"
-  }
-
-];
-
-
-  if (featuredProfiles) {
-
-    featuredProfiles.innerHTML =
-      models.map(model => `
+    return `
 
         <article class="profile-card">
 
-          <a
-            href="${model.profile}"
-            class="profile-image-link"
-          >
-
             <div class="profile-image">
 
-              <img
-                src="${model.image}"
-                alt="${model.name}"
-                loading="lazy"
-              >
+                <img
+                    src="${profile.image}"
+                    alt="${profile.name}"
+                >
 
-              <span class="profile-status">
-                Available
-              </span>
-
-            </div>
-
-          </a>
-
-
-          <div class="profile-content">
-
-            <h3>
-              ${model.name}
-            </h3>
-
-            <p class="profile-location">
-              📍 ${model.location}
-            </p>
-
-            <p class="profile-services">
-              ${model.services}
-            </p>
-
-            <p class="profile-phone">
-              📞 ${model.phone}
-            </p>
-
-
-            <div class="profile-actions">
-
-              <a
-                href="${model.profile}"
-                class="profile-view-btn"
-              >
-                View Profile
-              </a>
-
-              <a
-                href="tel:${model.phone.replace(/\s/g, '')}"
-                class="profile-book-btn"
-              >
-                Book Now
-              </a>
+                <span class="profile-number">
+                    #${profile.id}
+                </span>
 
             </div>
 
-          </div>
+
+            <div class="profile-content">
+
+                <small>
+                    PROFILE #${profile.id}
+                </small>
+
+                <h3>
+                    ${profile.name}
+                </h3>
+
+                <p>
+                    ${profile.category}
+                    ·
+                    ${profile.location}
+                </p>
+
+
+                <div class="card-buttons">
+
+                    <a
+                        href="profile.html?id=${profile.id}"
+                        class="outline-btn"
+                    >
+                        View Profile
+                    </a>
+
+                    <a
+                        href="booking.html?id=${profile.id}"
+                        class="gold-btn"
+                    >
+                        Book Now
+                    </a>
+
+                </div>
+
+            </div>
 
         </article>
 
-      `).join("");
+    `;
 
-  }
-
-
-  /* SCROLL REVEAL */
-
-  const revealItems =
-    document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window) {
-
-    const observer =
-      new IntersectionObserver(
-        (entries, obs) => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              obs.unobserve(
-                entry.target
-              );
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-    revealItems.forEach(
-      (item, index) => {
-
-        item.style.transitionDelay =
-          `${Math.min(index * 60, 300)}ms`;
-
-        observer.observe(item);
-      }
-    );
-
-  } else {
-
-    revealItems.forEach(
-      item =>
-        item.classList.add("visible")
-    );
-
-  }
+}
 
 
-  /* SMOOTH ANCHOR LINKS */
+function renderProfiles(list) {
 
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(anchor => {
+    const grid =
+        document.getElementById("profileGrid");
 
-      anchor.addEventListener(
-        "click",
-        event => {
+    if (!grid) return;
 
-          const targetId =
-            anchor.getAttribute("href");
 
-          const target =
-            document.querySelector(targetId);
+    if (list.length === 0) {
 
-          if (target) {
+        grid.innerHTML =
+            `<p class="no-results">
+                No profiles found.
+            </p>`;
 
-            event.preventDefault();
+        return;
 
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
+    }
 
-          }
 
-        }
-      );
+    grid.innerHTML =
+        list.map(createProfileCard).join("");
 
-    });
+}
 
-});
-```
+
+function loadSingleProfile() {
+
+    const container =
+        document.getElementById("singleProfile");
+
+    if (!container) return;
+
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const id =
+        params.get("id");
+
+
+    const profile =
+        profiles.find(
+            p => p.id === id
+        );
+
+
+    if (!profile) {
+
+        container.innerHTML =
+            "<h2>Profile not found.</h2>";
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <div class="profile-detail-image">
+
+            <img
+                src="${profile.image}"
+                alt="${profile.name}"
+            >
+
+        </div>
+
+
+        <div class="profile-detail-content">
+
+            <small>
+                PROFILE #${profile.id}
+            </small>
+
+            <h1>
+                ${profile.name}
+            </h1>
+
+            <p class="gold-text">
+                ${profile.category}
+                ·
+                ${profile.location}
+            </p>
+
+            <p>
+                ${profile.description}
+            </p>
+
+
+            <div class="detail-row">
+                <span>Profile ID</span>
+                <strong>#${profile.id}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Category</span>
+                <strong>${profile.category}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Location</span>
+                <strong>${profile.location}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Specialities</span>
+                <strong>${profile.skills}</strong>
+            </div>
+
+
+            <a
+                href="booking.html?id=${profile.id}"
+                class="gold-btn large-btn"
+            >
+                Book ${profile.name}
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+function loadBookingProfile() {
+
+    const input =
+        document.getElementById(
+            "bookingProfile"
+        );
+
+    if (!input) return;
+
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const id =
+        params.get("id");
+
+
+    if (!id) return;
+
+
+    const profile =
+        profiles.find(
+            p => p.id === id
+        );
+
+
+    if (profile) {
+
+        input.value =
+            `#${profile.id} — ${profile.name}`;
+
+    }
+
+}
+
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("navLinks");
+
+    nav.classList.toggle("mobile-active");
+
+}
 
