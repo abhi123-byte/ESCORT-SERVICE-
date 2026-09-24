@@ -77,63 +77,63 @@ document.addEventListener("DOMContentLoaded", () => {
   const featuredProfiles =
     document.getElementById("featuredProfiles");
 
-  const models = [
+const models = [
 
-    {
-      name: "Sofia",
-      location: "Andheri West, Mumbai",
-      image: "images/model1.jpg",
-      services: "Dinner • Events • Social Companionship",
-      phone: "+91 98765 43210",
-      profile: "model1.html"
-    },
+  {
+    name: "Sofia",
+    location: "Andheri West, Mumbai",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=85",
+    services: "Dinner • Events • Social Companionship",
+    phone: "+91 98765 43210",
+    profile: "model1.html"
+  },
 
-    {
-      name: "Alina",
-      location: "Andheri East, Mumbai",
-      image: "images/model2.jpg",
-      services: "Dinner • Events • Social Companionship",
-      phone: "+91 98765 43211",
-      profile: "model2.html"
-    },
+  {
+    name: "Alina",
+    location: "Andheri East, Mumbai",
+    image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=85",
+    services: "Dinner • Events • Social Companionship",
+    phone: "+91 98765 43211",
+    profile: "model2.html"
+  },
 
-    {
-      name: "Mia",
-      location: "Andheri West, Mumbai",
-      image: "images/model3.jpg",
-      services: "Dinner • Events • Social Companionship",
-      phone: "+91 98765 43212",
-      profile: "model3.html"
-    },
+  {
+    name: "Mia",
+    location: "Andheri West, Mumbai",
+    image: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=800&q=85",
+    services: "Dinner • Events • Social Companionship",
+    phone: "+91 98765 43212",
+    profile: "model3.html"
+  },
 
-    {
-      name: "Emma",
-      location: "Andheri, Mumbai",
-      image: "images/model4.jpg",
-      services: "Dinner • Events • Social Companionship",
-      phone: "+91 98765 43213",
-      profile: "model4.html"
-    },
+  {
+    name: "Emma",
+    location: "Andheri, Mumbai",
+    image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=85",
+    services: "Dinner • Events • Social Companionship",
+    phone: "+91 98765 43213",
+    profile: "model4.html"
+  },
 
-    {
-      name: "Sara",
-      location: "Andheri West, Mumbai",
-      image: "images/model5.jpg",
-      services: "Dinner • Events • Social Companionship",
-      phone: "+91 98765 43214",
-      profile: "model5.html"
-    },
+  {
+    name: "Sara",
+    location: "Andheri West, Mumbai",
+    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=85",
+    services: "Dinner • Events • Social Companionship",
+    phone: "+91 98765 43214",
+    profile: "model5.html"
+  },
 
-    {
-      name: "Riya",
-      location: "Andheri East, Mumbai",
-      image: "images/model6.jpg",
-      services: "Dinner • Events • Social Companionship",
-      phone: "+91 98765 43215",
-      profile: "model6.html"
-    }
+  {
+    name: "Riya",
+    location: "Andheri East, Mumbai",
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=85",
+    services: "Dinner • Events • Social Companionship",
+    phone: "+91 98765 43215",
+    profile: "model6.html"
+  }
 
-  ];
+];
 
 
   if (featuredProfiles) {
