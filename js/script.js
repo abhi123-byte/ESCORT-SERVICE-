@@ -1,359 +1,312 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* =========================
+     NAVBAR
+  ========================= */
+
   const navbar = document.getElementById("navbar");
   const menuBtn = document.getElementById("menuBtn");
   const navLinks = document.getElementById("navLinks");
 
-  /* NAVBAR */
-
   const updateNavbar = () => {
     if (navbar) {
-      navbar.classList.toggle(
-        "scrolled",
-        window.scrollY > 35
-      );
+      navbar.classList.toggle("scrolled", window.scrollY > 35);
     }
   };
 
   updateNavbar();
 
-  window.addEventListener(
-    "scroll",
-    updateNavbar,
-    { passive: true }
-  );
+  window.addEventListener("scroll", updateNavbar, { passive: true });
 
 
-  /* MOBILE MENU */
+  /* =========================
+     MOBILE MENU
+  ========================= */
 
   if (menuBtn && navLinks) {
 
-    menuBtn.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+    menuBtn.setAttribute("aria-expanded", "false");
 
     menuBtn.addEventListener("click", () => {
 
       navLinks.classList.toggle("open");
 
-      const isOpen =
-        navLinks.classList.contains("open");
+      const isOpen = navLinks.classList.contains("open");
 
       menuBtn.setAttribute(
         "aria-expanded",
         String(isOpen)
       );
 
-      menuBtn.textContent =
-        isOpen ? "×" : "☰";
+      menuBtn.textContent = isOpen ? "×" : "☰";
     });
 
+    navLinks.querySelectorAll("a").forEach(link => {
 
-    navLinks
-      .querySelectorAll("a")
-      .forEach(link => {
+      link.addEventListener("click", () => {
 
-        link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
 
-          navLinks.classList.remove("open");
+        menuBtn.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-          menuBtn.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-          menuBtn.textContent = "☰";
-        });
-
+        menuBtn.textContent = "☰";
       });
+
+    });
   }
 
 
-  /* SCROLL REVEAL */
+  /* =========================
+     SCROLL REVEAL
+  ========================= */
 
   const revealItems =
     document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
 
-    const observer =
-      new IntersectionObserver(
-        (entries, obs) => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
 
-          entries.forEach(entry => {
+        entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
+          if (entry.isIntersecting) {
 
-              entry.target.classList.add(
-                "visible"
-              );
+            entry.target.classList.add("visible");
 
-              obs.unobserve(
-                entry.target
-              );
-            }
+            obs.unobserve(entry.target);
+          }
 
-          });
+        });
 
-        },
-        {
-          threshold:0.12
-        }
-      );
-
-    revealItems.forEach(
-      (item, index) => {
-
-        item.style.transitionDelay =
-          `${Math.min(index * 60, 300)}ms`;
-
-        observer.observe(item);
+      },
+      {
+        threshold: 0.12
       }
     );
 
+    revealItems.forEach((item, index) => {
+
+      item.style.transitionDelay =
+        `${Math.min(index * 60, 300)}ms`;
+
+      observer.observe(item);
+    });
+
   } else {
 
-    revealItems.forEach(
-      item =>
-        item.classList.add("visible")
-    );
+    revealItems.forEach(item => {
+      item.classList.add("visible");
+    });
 
   }
 
 
-  /* SMOOTH ANCHOR LINKS */
+  /* =========================
+     SMOOTH ANCHOR LINKS
+  ========================= */
 
   document
     .querySelectorAll('a[href^="#"]')
     .forEach(anchor => {
 
-      anchor.addEventListener(
-        "click",
-        event => {
+      anchor.addEventListener("click", event => {
 
-          const targetId =
-            anchor.getAttribute("href");
+        const targetId =
+          anchor.getAttribute("href");
 
-          const target =
-            document.querySelector(targetId);
+        if (!targetId || targetId === "#") {
+          return;
+        }
 
-          if (target) {
+        const target =
+          document.querySelector(targetId);
 
-            event.preventDefault();
+        if (target) {
 
-            target.scrollIntoView({
-              behavior:"smooth",
-              block:"start"
-            });
+          event.preventDefault();
 
-          }
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
 
         }
-      );
+
+      });
 
     });
 
-});document.addEventListener("DOMContentLoaded", function () {
 
-const profiles = [
-{
-name: "Alina",
-location: "Mumbai · Fashion Model",
-image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85",
-about: "Professional fashion model available for approved commercial, editorial and promotional projects.",
-services: [
-"Fashion Shoots",
-"Editorial",
-"Brand Campaigns",
-"Promotional Events"
-],
-phone: "+91 90000 00001"
-},
+  /* =========================
+     FEATURED PROFILES
+  ========================= */
 
-```
-{
-  name: "Sofia",
-  location: "Delhi · Editorial Model",
-  image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85",
-  about: "Professional model experienced in editorial photography and commercial campaigns.",
-  services: [
-    "Editorial Shoots",
-    "Fashion",
-    "Brand Campaigns",
-    "Photography"
-  ],
-  phone: "+91 90000 00002"
-},
+  const cards =
+    document.querySelectorAll(".profile-card");
 
-{
-  name: "Kiara",
-  location: "Bangalore · Commercial Model",
-  image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85",
-  about: "Commercial and lifestyle model available for professional photography and promotional projects.",
-  services: [
-    "Lifestyle",
-    "Commercial",
-    "Fashion Shoots",
-    "Promotional Events"
-  ],
-  phone: "+91 90000 00003"
-},
+  const overlay =
+    document.getElementById("profileOverlay");
 
-{
-  name: "Arjun",
-  location: "Mumbai · Fashion Model",
-  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85",
-  about: "Professional male model working across fashion, editorial and commercial photography.",
-  services: [
-    "Fashion",
-    "Editorial",
-    "Commercial",
-    "Brand Shoots"
-  ],
-  phone: "+91 90000 00004"
-},
+  const closeButton =
+    document.getElementById("profileClose");
 
-{
-  name: "Ryan",
-  location: "Delhi · Commercial Model",
-  image: "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85",
-  about: "Commercial model available for professional advertising and lifestyle campaigns.",
-  services: [
-    "Advertising",
-    "Lifestyle",
-    "Commercial",
-    "Brand Campaigns"
-  ],
-  phone: "+91 90000 00005"
-},
+  const detailImage =
+    document.getElementById("detailImage");
 
-{
-  name: "Maya",
-  location: "Hyderabad · Editorial Model",
-  image: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=900&q=85",
-  about: "Editorial and fashion model experienced in professional photography projects.",
-  services: [
-    "Editorial",
-    "Fashion",
-    "Photography",
-    "Promotional Events"
-  ],
-  phone: "+91 90000 00006"
-}
-```
+  const detailName =
+    document.getElementById("detailName");
 
-];
+  const detailLocation =
+    document.getElementById("detailLocation");
 
-const cards = document.querySelectorAll(".profile-card");
-const overlay = document.getElementById("profileOverlay");
-const closeButton = document.getElementById("profileClose");
+  const detailAbout =
+    document.getElementById("detailAbout");
 
-const detailImage = document.getElementById("detailImage");
-const detailName = document.getElementById("detailName");
-const detailLocation = document.getElementById("detailLocation");
-const detailAbout = document.getElementById("detailAbout");
-const detailServices = document.getElementById("detailServices");
-const detailPhone = document.getElementById("detailPhone");
-const detailContact = document.getElementById("detailContact");
+  const detailServices =
+    document.getElementById("detailServices");
 
-function openProfile(index) {
+  const detailPhone =
+    document.getElementById("detailPhone");
 
-```
-const profile = profiles[index];
+  const detailContact =
+    document.getElementById("detailContact");
 
-if (!profile) return;
 
-detailImage.src = profile.image;
-detailImage.alt = profile.name;
+  /* Check that profile system exists */
 
-detailName.textContent = profile.name;
-detailLocation.textContent = profile.location;
-detailAbout.textContent = profile.about;
-detailPhone.textContent = profile.phone;
+  if (
+    !cards.length ||
+    !overlay ||
+    !closeButton
+  ) {
+    return;
+  }
 
-detailServices.innerHTML = "";
 
-profile.services.forEach(function(service) {
+  /* =========================
+     OPEN PROFILE
+  ========================= */
 
-  const span = document.createElement("span");
+  function openProfile(index) {
 
-  span.textContent = service;
+    const profile = profiles[index];
 
-  detailServices.appendChild(span);
+    if (!profile) {
+      console.error("Profile not found:", index);
+      return;
+    }
 
-});
+    detailImage.src = profile.image;
+    detailImage.alt = profile.name;
 
-/*
-  Replace the number below with your own WhatsApp number.
-  Use country code without + or spaces.
-*/
+    detailName.textContent =
+      profile.name;
 
-const enquiryMessage =
-  "Hello, I would like to make an enquiry regarding " +
-  profile.name +
-  ".";
+    detailLocation.textContent =
+      profile.location;
 
-detailContact.href =
-  "https://wa.me/919000000000?text=" +
-  encodeURIComponent(enquiryMessage);
+    detailAbout.textContent =
+      profile.about;
 
-overlay.classList.add("active");
+    detailPhone.textContent =
+      profile.phone;
 
-document.body.style.overflow = "hidden";
-```
 
-}
+    /* Services */
 
-function closeProfile() {
+    detailServices.innerHTML = "";
 
-```
-overlay.classList.remove("active");
+    profile.services.forEach(service => {
 
-document.body.style.overflow = "";
-```
+      const span =
+        document.createElement("span");
 
-}
+      span.textContent = service;
 
-cards.forEach(function(card) {
+      detailServices.appendChild(span);
 
-```
-card.addEventListener("click", function(event) {
+    });
 
-  event.stopPropagation();
 
-  const index = Number(card.dataset.profile);
+    /* Enquiry */
 
-  openProfile(index);
+    const message =
+      `Hello, I would like to make an enquiry regarding ${profile.name}.`;
+
+    detailContact.href =
+      "https://wa.me/919000000000?text=" +
+      encodeURIComponent(message);
+
+
+    /* Show popup */
+
+    overlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+  }
+
+
+  /* =========================
+     CLOSE PROFILE
+  ========================= */
+
+  function closeProfile() {
+
+    overlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+  }
+
+
+  /* =========================
+     CARD CLICK
+  ========================= */
+
+  cards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+      const index =
+        Number(card.dataset.profile);
+
+      openProfile(index);
+
+    });
+
+  });
+
+
+  /* Close button */
+
+  closeButton.addEventListener(
+    "click",
+    closeProfile
+  );
+
+
+  /* Click outside popup */
+
+  overlay.addEventListener("click", event => {
+
+    if (event.target === overlay) {
+      closeProfile();
+    }
+
+  });
+
+
+  /* Escape key */
+
+  document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+      closeProfile();
+    }
+
+  });
 
 });
-```
-
-});
-
-closeButton.addEventListener("click", closeProfile);
-
-overlay.addEventListener("click", function(event) {
-
-```
-if (event.target === overlay) {
-  closeProfile();
-}
-```
-
-});
-
-document.addEventListener("keydown", function(event) {
-
-```
-if (event.key === "Escape") {
-  closeProfile();
-}
-```
-
-});
-
-});
-
-
-
