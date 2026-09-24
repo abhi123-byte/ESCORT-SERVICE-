@@ -192,7 +192,7 @@ nav a:hover::after{
       rgba(0,0,0,.55),
       transparent 55%
     ),
-    url("download.jpg")
+    url("HOMEPAGE.jpg")
     center/cover no-repeat;
 }
 
