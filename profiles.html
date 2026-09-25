@@ -1,10 +1,1162 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Profiles — LUXE</title><link rel="stylesheet" href="css/style.css"></head>
-<body><header class="navbar" id="navbar"></header>
-<main><section class="page-hero"><div class="container"><p class="eyebrow">THE COLLECTION</p><h1>Profiles</h1><p>Browse our curated professional talent directory.</p></div></section>
-<section class="section"><div class="container"><div class="filters">
-<input id="profileSearch" type="search" placeholder="Search by name, category or location">
-<select id="categoryFilter"><option value="">All categories</option><option>Model</option><option>Creator</option><option>Artist</option></select>
-<select id="locationFilter"><option value="">All locations</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>Kolkata</option><option>Ranchi</option><option>Pune</option></select>
-</div><div id="allProfiles" class="profile-grid"></div></div></section></main><footer></footer>
-<script src="js/profiles.js"></script><script src="js/script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Profiles | LUXE.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ================================
+       PROFILES DIRECTORY
+    ================================= */
+
+    .profiles-page {
+      padding: 150px 5% 100px;
+      background: #0b0b0b;
+      min-height: 100vh;
+    }
+
+    .profiles-header {
+      max-width: 850px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .profiles-header .eyebrow {
+      color: #e8a0bf;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .profiles-header h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(50px, 7vw, 85px);
+      font-weight: 500;
+      line-height: .95;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .profiles-header p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* GRID */
+
+    .profiles-directory {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    /* CARD */
+
+    .directory-card {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      min-height: 310px;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,.08);
+      overflow: hidden;
+      transition: .35s ease;
+    }
+
+    .directory-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(232,160,191,.5);
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+
+    /* IMAGE */
+
+    .directory-image {
+      width: 100%;
+      height: 100%;
+      min-height: 310px;
+      overflow: hidden;
+      background: #202020;
+    }
+
+    .directory-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .directory-card:hover .directory-image img {
+      transform: scale(1.05);
+    }
+
+    /* CONTENT */
+
+    .directory-content {
+      padding: 30px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-number {
+      color: #e8a0bf;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .directory-content h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      font-weight: 500;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+
+    .profile-service {
+      color: #e8a0bf;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+    }
+
+    .profile-location {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .profile-phone {
+      color: #ddd;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    /* BOOK BUTTON */
+
+    .book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 180px;
+      min-height: 45px;
+      padding: 12px 20px;
+      border: 1px solid #e8a0bf;
+      background: transparent;
+      color: #e8a0bf;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      font-weight: 600;
+      transition: .3s ease;
+    }
+
+    .book-btn:hover {
+      background: #e8a0bf;
+      color: #111;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .profiles-page {
+        padding: 120px 20px 70px;
+      }
+
+      .profiles-directory {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .directory-card {
+        grid-template-columns: 200px 1fr;
+      }
+
+      .directory-image {
+        min-height: 290px;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .profiles-page {
+        padding: 105px 15px 60px;
+      }
+
+      .profiles-header {
+        margin-bottom: 40px;
+      }
+
+      .profiles-header h1 {
+        font-size: 52px;
+      }
+
+      .profiles-header p {
+        font-size: 14px;
+      }
+
+      .directory-card {
+        grid-template-columns: 135px 1fr;
+        min-height: 240px;
+      }
+
+      .directory-image {
+        min-height: 240px;
+      }
+
+      .directory-content {
+        padding: 20px 17px;
+      }
+
+      .profile-number {
+        font-size: 9px;
+        margin-bottom: 7px;
+      }
+
+      .directory-content h2 {
+        font-size: 29px;
+      }
+
+      .profile-service {
+        font-size: 9px;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+
+      .profile-location {
+        font-size: 11px;
+        margin-bottom: 10px;
+      }
+
+      .profile-phone {
+        font-size: 11px;
+        margin-bottom: 15px;
+      }
+
+      .book-btn {
+        max-width: 135px;
+        min-height: 38px;
+        padding: 9px 10px;
+        font-size: 9px;
+      }
+
+    }
+
+    @media (max-width: 400px) {
+
+      .directory-card {
+        grid-template-columns: 115px 1fr;
+      }
+
+      .directory-image {
+        min-height: 225px;
+      }
+
+      .directory-content {
+        padding: 17px 13px;
+      }
+
+      .directory-content h2 {
+        font-size: 25px;
+      }
+
+      .profile-phone {
+        font-size: 10px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================================
+       NAVBAR
+  ================================= -->
+
+  <header class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      LUXE<span>.</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      ☰
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+
+      <a href="index.html">Home</a>
+
+      <a href="profiles.html" class="active">
+        Profiles
+      </a>
+
+      <a href="categories.html">
+        Categories
+      </a>
+
+      <a href="locations.html">
+        Locations
+      </a>
+
+      <a href="gallery.html">
+        Gallery
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- ================================
+       PROFILES
+  ================================= -->
+
+  <main class="profiles-page">
+
+    <div class="profiles-header reveal">
+
+      <p class="eyebrow">
+        THE LUXE DIRECTORY
+      </p>
+
+      <h1>
+        Our Profiles
+      </h1>
+
+      <p>
+        Explore our professional talent directory and discover
+        models and creative professionals available for approved
+        photography, fashion, commercial and promotional projects.
+      </p>
+
+    </div>
+
+
+    <div class="profiles-directory">
+
+
+      <!-- =================================
+           PROFILE 01
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+            alt="Alina"
+          >
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">
+            PROFILE 01
+          </div>
+
+          <h2>Alina</h2>
+
+          <div class="profile-service">
+            Fashion Model
+          </div>
+
+          <div class="profile-location">
+            Mumbai
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00001
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================
+           PROFILE 02
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img
+            src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=85"
+            alt="Sofia"
+          >
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">
+            PROFILE 02
+          </div>
+
+          <h2>Sofia</h2>
+
+          <div class="profile-service">
+            Editorial Model
+          </div>
+
+          <div class="profile-location">
+            Delhi
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00002
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================
+           PROFILE 03
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img
+            src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=85"
+            alt="Kiara"
+          >
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">
+            PROFILE 03
+          </div>
+
+          <h2>Kiara</h2>
+
+          <div class="profile-service">
+            Commercial Model
+          </div>
+
+          <div class="profile-location">
+            Bangalore
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00003
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================
+           PROFILE 04
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85"
+            alt="Arjun"
+          >
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">
+            PROFILE 04
+          </div>
+
+          <h2>Arjun</h2>
+
+          <div class="profile-service">
+            Fashion Model
+          </div>
+
+          <div class="profile-location">
+            Mumbai
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00004
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================
+           PROFILE 05
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img
+            src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85"
+            alt="Ryan"
+          >
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">
+            PROFILE 05
+          </div>
+
+          <h2>Ryan</h2>
+
+          <div class="profile-service">
+            Commercial Model
+          </div>
+
+          <div class="profile-location">
+            Delhi
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00005
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================
+           PROFILE 06
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img
+            src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=900&q=85"
+            alt="Maya"
+          >
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">
+            PROFILE 06
+          </div>
+
+          <h2>Maya</h2>
+
+          <div class="profile-service">
+            Editorial Model
+          </div>
+
+          <div class="profile-location">
+            Hyderabad
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00006
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================
+           PROFILE 07
+           2740102.jpg
+      ================================= -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/2740102.jpg" alt="Anaya">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 07</div>
+
+          <h2>Anaya</h2>
+
+          <div class="profile-service">
+            Fashion Model
+          </div>
+
+          <div class="profile-location">
+            Mumbai
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00007
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 08 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort1.jpg" alt="Riya">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 08</div>
+
+          <h2>Riya</h2>
+
+          <div class="profile-service">
+            Lifestyle Model
+          </div>
+
+          <div class="profile-location">
+            Delhi
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00008
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 09 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort2.jpg" alt="Meera">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 09</div>
+
+          <h2>Meera</h2>
+
+          <div class="profile-service">
+            Commercial Model
+          </div>
+
+          <div class="profile-location">
+            Bangalore
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00009
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 10 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort3.jpg" alt="Tara">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 10</div>
+
+          <h2>Tara</h2>
+
+          <div class="profile-service">
+            Editorial Model
+          </div>
+
+          <div class="profile-location">
+            Hyderabad
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00010
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 11 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort4.jpeg" alt="Naina">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 11</div>
+
+          <h2>Naina</h2>
+
+          <div class="profile-service">
+            Fashion Model
+          </div>
+
+          <div class="profile-location">
+            Mumbai
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00011
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 12 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort5.jpeg" alt="Isha">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 12</div>
+
+          <h2>Isha</h2>
+
+          <div class="profile-service">
+            Commercial Model
+          </div>
+
+          <div class="profile-location">
+            Delhi
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00012
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 13 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort6.jpeg" alt="Kavya">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 13</div>
+
+          <h2>Kavya</h2>
+
+          <div class="profile-service">
+            Lifestyle Model
+          </div>
+
+          <div class="profile-location">
+            Pune
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00013
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 14 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort7.jpeg" alt="Aarohi">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 14</div>
+
+          <h2>Aarohi</h2>
+
+          <div class="profile-service">
+            Editorial Model
+          </div>
+
+          <div class="profile-location">
+            Chennai
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00014
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 15 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort8.jpeg" alt="Diya">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 15</div>
+
+          <h2>Diya</h2>
+
+          <div class="profile-service">
+            Fashion Model
+          </div>
+
+          <div class="profile-location">
+            Kolkata
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00015
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 16 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort9.jpeg" alt="Sara">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 16</div>
+
+          <h2>Sara</h2>
+
+          <div class="profile-service">
+            Commercial Model
+          </div>
+
+          <div class="profile-location">
+            Mumbai
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00016
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 17 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort10.jpeg" alt="Aanya">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 17</div>
+
+          <h2>Aanya</h2>
+
+          <div class="profile-service">
+            Editorial Model
+          </div>
+
+          <div class="profile-location">
+            Delhi
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00017
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 18 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort11.jpeg" alt="Neha">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 18</div>
+
+          <h2>Neha</h2>
+
+          <div class="profile-service">
+            Lifestyle Model
+          </div>
+
+          <div class="profile-location">
+            Bangalore
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00018
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 19 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort12.jpeg" alt="Pia">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 19</div>
+
+          <h2>Pia</h2>
+
+          <div class="profile-service">
+            Fashion Model
+          </div>
+
+          <div class="profile-location">
+            Hyderabad
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00019
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROFILE 20 -->
+
+      <article class="directory-card reveal">
+
+        <div class="directory-image">
+          <img src="images/escort13.jpg" alt="Zoya">
+        </div>
+
+        <div class="directory-content">
+
+          <div class="profile-number">PROFILE 20</div>
+
+          <h2>Zoya</h2>
+
+          <div class="profile-service">
+            Commercial Model
+          </div>
+
+          <div class="profile-location">
+            Pune
+          </div>
+
+          <div class="profile-phone">
+            +91 90000 00020
+          </div>
+
+          <a href="booking.html" class="book-btn">
+            Book Now
+          </a>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- ================================
+       FOOTER
+  ================================= -->
+
+  <footer class="footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          LUXE<span>.</span>
+        </a>
+
+        <p>
+          A premium professional talent directory
+          for approved creative and commercial bookings.
+        </p>
+      </div>
+
+      <div class="footer-links">
+
+        <a href="index.html">Home</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="categories.html">Categories</a>
+        <a href="locations.html">Locations</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 LUXE. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
