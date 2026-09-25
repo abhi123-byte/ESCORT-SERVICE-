@@ -821,10 +821,10 @@ button {
 
 .statement-content h2 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(25px, 3vw, 45px);
-  font-weight: 400;
-  line-height: 1.1;
-  margin-bottom: 25px;
+  font-size: clamp(19px, 2vw, 30px);
+  font-weight: 250;
+  line-height: 1.0;
+  margin-bottom: 19px;
 }
 
 .statement-content > p:last-child {
