@@ -3,8 +3,8 @@ const profiles = [
     name: "Alina",
     location: "Mumbai · Fashion Model",
     image: "escort4.jpeg",
-    about: "Professional fashion model available for approved commercial, editorial and promotional projects.",
-    services: ["Fashion Shoots", "Editorial", "Brand Campaigns", "Promotional Events"],
+    about: "College Going Call Girl In Andheri Mumbai For Premium Sex Service, Hello Horny Boys Out There My Name Is Alina And I am a 22 year college girl providing some premium and VIP Model call Girl Service In all over Andheri .",
+    services: ["Blowjob Without Condom", "Cum on Body", "Doggy Style", "Role Play", "Girlfriend Experience "],
     phone: "+91 90000 00001"
   },
   {
