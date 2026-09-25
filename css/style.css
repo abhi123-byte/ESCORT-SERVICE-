@@ -1412,3 +1412,76 @@ a:focus-visible {
   }
 
 }
+/* PROFILE ACTION BUTTONS */
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.profile-actions a {
+  flex: 1;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+
+  border-radius: 5px;
+  transition: .25s ease;
+}
+
+.profile-actions svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* BLUE CALL BUTTON */
+
+.profile-call-btn {
+  background: #1877f2;
+  color: #fff;
+  border: 1px solid #1877f2;
+}
+
+.profile-call-btn:hover {
+  background: #0d6efd;
+  transform: translateY(-2px);
+}
+
+/* GREEN WHATSAPP BUTTON */
+
+.profile-whatsapp-btn {
+  background: #25D366;
+  color: #fff;
+  border: 1px solid #25D366;
+}
+
+.profile-whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .profile-actions {
+    gap: 7px;
+  }
+
+  .profile-actions a {
+    min-height: 43px;
+    font-size: 9px;
+  }
+
+  .profile-actions svg {
+    width: 15px;
+    height: 15px;
+  }
+}
