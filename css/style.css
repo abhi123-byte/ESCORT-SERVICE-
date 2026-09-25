@@ -615,6 +615,7 @@ button {
 .profile-detail-content {
   padding: 60px 50px;
   overflow-y: auto;
+   min-height: 0;
 }
 
 .detail-label {
