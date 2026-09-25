@@ -27,7 +27,7 @@ const profiles = [
     name: "Rani",
     location: "Mumbai · service Girl",
     image: "escort7.jpeg",
-    about: "Hot Ranchi girl Rani 21 years old hand to hand cash payment safe and secure genuine escorts agency. We provide well educated call girls in Andheri or get full time a-1 high class luxury and premium escorts agency without condom Mouth sucking all type of position discharge and much more with unlimited shots..",
+    about: "Hot Andheri girl Rani 21 years old hand to hand cash payment safe and secure genuine escorts agency. We provide well educated call girls in Andheri or get full time a-1 high class luxury and premium escorts agency without condom Mouth sucking all type of position discharge and much more with unlimited shots..",
     services: ["DoggyStyle", "Erotic Rub Down", "Blowjob Without Condom", "Cum On Body", "Girlfriend Experience"],
     phone: "+91 90000 00004"
   },
