@@ -1497,7 +1497,7 @@ a:focus-visible {
 .mumbai-content-image img {
   width: 100%;
   height: 420px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
