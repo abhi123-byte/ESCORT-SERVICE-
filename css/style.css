@@ -810,7 +810,7 @@ button {
       rgba(0,0,0,0.55),
       rgba(0,0,0,0.8)
     ),
-    url("2740102.jpg")
+    url("none")
     center / cover no-repeat;
 
   background-attachment: fixed;
