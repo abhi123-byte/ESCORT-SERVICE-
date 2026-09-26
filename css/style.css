@@ -1484,18 +1484,26 @@ a:focus-visible {
     width: 15px;
     height: 15px;
   }
-}/* Keep profile image separate from the text */
+}/* =========================================
+   PROFILE CARD — IMAGE ON TOP, TEXT BELOW
+   ========================================= */
+
 .directory-card {
   display: block !important;
-  width: 100%;
+  width: 100% !important;
+  height: auto !important;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
+/* PHOTO */
 .directory-image {
   display: block !important;
-  width: 100%;
-  height: 380px;
+  width: 100% !important;
+  height: 380px !important;
   overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .directory-image img {
@@ -1503,11 +1511,66 @@ a:focus-visible {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
-  object-position: center;
+  object-position: center !important;
 }
 
+/* ALL TEXT BELOW PHOTO */
 .directory-content {
   display: block !important;
   width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  position: relative !important;
   box-sizing: border-box;
+  padding: 25px;
+  overflow: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* PROFILE NUMBER */
+.directory-content .profile-number {
+  display: block !important;
+}
+
+/* NAME */
+.directory-content h2 {
+  display: block !important;
+}
+
+/* DESCRIPTION */
+.directory-content .profile-description {
+  display: block !important;
+}
+
+/* RATES + SERVICES */
+.directory-content .profile-details {
+  display: block !important;
+}
+
+/* SERVICE / LOCATION / PHONE */
+.directory-content .profile-service,
+.directory-content .profile-location,
+.directory-content .profile-phone {
+  display: block !important;
+}
+
+/* BUTTONS */
+.directory-content .profile-actions {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+  .directory-image {
+    height: 300px !important;
+  }
+
+  .directory-content {
+    padding: 20px !important;
+  }
+
 }
