@@ -1485,30 +1485,3 @@ a:focus-visible {
     height: 15px;
   }
 }
-# statement section beneath category
-
-.mumbai-content-image {
-  margin-top: 40px;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.mumbai-content-image img {
-  width: 100%;
-  height: 420px;
-  object-fit: contain;
-  display: block;
-}
-
-@media (max-width: 700px) {
-
-  .mumbai-content-image {
-    margin-top: 30px;
-  }
-
-  .mumbai-content-image img {
-    height: 250px;
-  }
-
-}
