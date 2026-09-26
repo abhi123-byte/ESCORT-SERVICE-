@@ -1484,4 +1484,26 @@ a:focus-visible {
     width: 15px;
     height: 15px;
   }
+}/* Keep profile image separate from the text */
+.directory-card {
+  overflow: hidden;
+}
+
+.directory-image {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+}
+
+.directory-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.directory-content {
+  width: 100%;
+  box-sizing: border-box;
 }
