@@ -1573,17 +1573,4 @@ a:focus-visible {
     padding: 20px !important;
   }
 
-}/* ===== SERVICES LIST BOX ===== */
-.profile-details h4 {
-  margin-top: 22px;
-  margin-bottom: 10px;
-}
-
-.profile-details h4 + p {
-  padding: 14px 16px;
-  border: 1px solid rgba(255, 105, 180, 0.5);
-  border-radius: 10px;
-  background: rgba(255, 105, 180, 0.06);
-  line-height: 1.6;
-  margin: 0;
 }
