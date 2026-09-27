@@ -567,7 +567,7 @@ button {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
 
-  overflow: hidden;
+  overflow: auto;
 
   background: #111;
   border: 1px solid rgba(255,255,255,0.12);
