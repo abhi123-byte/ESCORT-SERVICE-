@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!ageGate) return;
 
   /* Check whether visitor has already verified */
-  if (localStorage.getItem("luxeAgeVerified") === "true") {
+  if (localStorage.getItem("MAANYAAgeVerified") === "true") {
     ageGate.classList.add("hidden");
     document.body.style.overflow = "";
   } else {
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ENTER WEBSITE */
   ageEnter.addEventListener("click", function () {
 
-    localStorage.setItem("luxeAgeVerified", "true");
+    localStorage.setItem("MAANYAAgeVerified", "true");
 
     ageGate.classList.add("hidden");
 
