@@ -366,7 +366,7 @@ button {
 
 .profile-card {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   cursor: pointer;
   background: #111;
   border: 1px solid rgba(255,255,255,0.08);
