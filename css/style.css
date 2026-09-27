@@ -1573,4 +1573,227 @@ a:focus-visible {
     padding: 20px !important;
   }
 
+}/* =========================================================
+   PREMIUM 18+ AGE VERIFICATION POPUP
+   ========================================================= */
+
+.age-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.age-gate.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.age-gate-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(70, 15, 45, 0.45),
+      rgba(0, 0, 0, 0.96)
+    );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.age-gate-box {
+  position: relative;
+  z-index: 2;
+  width: min(500px, 100%);
+  padding: 48px 38px 38px;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 20, 27, 0.98),
+      rgba(10, 10, 12, 0.98)
+    );
+
+  border: 1px solid rgba(255, 105, 180, 0.35);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.75),
+    0 0 50px rgba(255, 70, 160, 0.08);
+
+  border-radius: 4px;
+
+  animation: ageGateAppear 0.7s ease forwards;
+}
+
+@keyframes ageGateAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.age-gate-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 38px;
+  letter-spacing: 7px;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.age-gate-line {
+  width: 55px;
+  height: 1px;
+  margin: 0 auto 28px;
+
+  background: #ff69b4;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.5);
+}
+
+.age-gate-box h2 {
+  margin: 0 0 15px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 3px;
+
+  color: #ff8bc5;
+}
+
+.age-gate-main {
+  margin: 0 0 10px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+
+  color: #fff;
+}
+
+.age-gate-text {
+  max-width: 390px;
+  margin: 0 auto 30px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.age-gate-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.age-enter-btn {
+  width: 100%;
+  padding: 15px 20px;
+
+  border: 1px solid #ff69b4;
+  background: #ff69b4;
+  color: #111;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.age-enter-btn:hover {
+  background: transparent;
+  color: #ff8bc5;
+
+  box-shadow:
+    0 0 25px rgba(255, 105, 180, 0.18);
+
+  transform: translateY(-1px);
+}
+
+.age-leave-btn {
+  width: 100%;
+  padding: 13px 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.age-leave-btn:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.age-gate-warning {
+  margin: 24px 0 0;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  line-height: 1.6;
+
+  color: rgba(255, 255, 255, 0.35);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .age-gate {
+    padding: 18px;
+  }
+
+  .age-gate-box {
+    padding: 38px 25px 28px;
+  }
+
+  .age-gate-logo {
+    font-size: 32px;
+    letter-spacing: 5px;
+  }
+
+  .age-gate-box h2 {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .age-gate-main {
+    font-size: 24px;
+  }
+
+  .age-gate-text {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
 }
