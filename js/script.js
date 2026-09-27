@@ -310,3 +310,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+/* =========================================================
+   PREMIUM 18+ AGE VERIFICATION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const ageGate = document.getElementById("ageGate");
+  const ageEnter = document.getElementById("ageEnter");
+  const ageLeave = document.getElementById("ageLeave");
+
+  if (!ageGate) return;
+
+  /* Check whether visitor has already verified */
+  if (localStorage.getItem("luxeAgeVerified") === "true") {
+    ageGate.classList.add("hidden");
+    document.body.style.overflow = "";
+  } else {
+    document.body.style.overflow = "hidden";
+  }
+
+  /* ENTER WEBSITE */
+  ageEnter.addEventListener("click", function () {
+
+    localStorage.setItem("luxeAgeVerified", "true");
+
+    ageGate.classList.add("hidden");
+
+    document.body.style.overflow = "";
+
+  });
+
+  /* UNDER 18 */
+  ageLeave.addEventListener("click", function () {
+
+    window.location.href = "https://www.google.com";
+
+  });
+
+});
